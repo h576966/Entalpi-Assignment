@@ -1,0 +1,14 @@
+{
+    //tells vsCode the src of the project and directs intellisens to only
+    //consern itself with files in this directory and node_modules
+    "include": [        
+      "./src/**/*"
+    ],
+
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+        }
+    }
+}
