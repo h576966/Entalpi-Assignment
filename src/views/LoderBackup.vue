@@ -71,6 +71,8 @@ export default {
 //end edit
     };
 
+    
+
     async function uploadFitFile(event) {
       try {
         uploading.value = true;
@@ -79,7 +81,7 @@ export default {
           throw new Error("You must select an file to upload.");
         }
 
-        //const user = supabase.auth.user();
+        const user = supabase.auth.user();
         const file = event.target.files[0];
         const fileExt = file.name.split(".").pop();
         const fileName = `${Math.random()}.${fileExt}`;
@@ -101,6 +103,14 @@ export default {
       }
     }
 
+  /* const listAll = async => {
+
+    const { data, error } = await supabase.storage.from('fitfilebucket').list();
+      if (error) throw error;
+      var fileList = await data.arrayBuffer();
+      return fileList;
+    }; 
+ */
     return {
       fileUrl,
       uploading,

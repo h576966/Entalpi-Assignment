@@ -22,7 +22,6 @@ import Loader from "./Loader.vue";
 import { supabase } from "@/supabase";
 import { useStore } from "vuex"
 import { computed } from "vue"
-import fitparser from '@/assets/fitparser.js'
 
 export default defineComponent({
   name: "Home",
@@ -41,6 +40,15 @@ export default defineComponent({
       file_url.value = path;
 
     };
+
+    async function listAll() {
+
+    const { data, error } = await supabase.storage.from('fitfilebucket').list();
+      if (error) throw error;
+
+      return data;
+    }; 
+ 
 
     return {
       userEmail,
